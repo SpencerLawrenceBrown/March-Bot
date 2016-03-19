@@ -11,4 +11,9 @@ router.get("/", function(req, res){
 	res.render('pages/index');
 });
 
+router.get("/incoming", function(req, res){
+	console.log(req);
+	console.log(res);
+});
+
 module.exports = router;
