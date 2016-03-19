@@ -15,7 +15,7 @@ lib-cov
 coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
+.gulp
 
 # node-waf configuration
 .lock-wscript
@@ -31,3 +31,6 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+app/config/*
+
