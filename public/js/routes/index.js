@@ -12,8 +12,7 @@ router.get("/", function(req, res){
 });
 
 router.post("/incoming", function(req, res){
-	console.log(req);
-	console.log(res);
+	console.log(req.body);
 });
 
 module.exports = router;
