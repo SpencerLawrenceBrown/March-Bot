@@ -6,6 +6,9 @@ var methodOverride 	= require('method-override'); //HTTP Request Methods
 var favicon 		= require('serve-favicon'); //Load Favicon
 var morgan       	= require('morgan');
 
+//Chat Interface
+var chat 			= require('./app/chat/chatcli');
+
 //Files
 var index			= require('./public/js/routes/index'); //routes
 var config 			= require('./app/config/serverConfig');
@@ -14,7 +17,7 @@ var app = express();
 
 //Configuration
 var port = process.env.port || config.port;
- var ip = config.ip;
+var ip = config.ip;
 
 
 //Module connection
@@ -39,5 +42,8 @@ app.use("/", index);
 //Start Server
 app.listen(port, ip);
 console.log("'March Bot' server running at " + ip + ":" + port);
+
+//Start Chat
+chat.start();
 
 exports = module.exports = app;
