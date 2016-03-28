@@ -9,6 +9,7 @@
     "express-session": "^1.13.0",
     "method-override": "latest",
     "morgan": "latest",
+    "mysql": "^2.10.2",
     "natural": "^0.4.0",
     "redis": "^2.4.2",
     "serve-favicon": "latest",

@@ -4,7 +4,9 @@ var util = require('util');
 //Chat Brain
 var bot = require("./brain");
 
-function startChat(){
+var chat = {}
+
+chat.start = function(){
 	//Start the bot
 	bot.init();
 	
@@ -33,4 +35,4 @@ function prompt(){
 	process.stdout.write("\n> ");
 }
 
-exports.start = startChat;
+module.exports = chat;
