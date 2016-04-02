@@ -5,7 +5,7 @@ var db = require("./database_modules/database");
 var async = require("async");
 
 var eventsModel = {};
-eventsModel.events = []
+eventsModel.events = {};
 
 eventsModel.init = function(){
 	var self = this;
@@ -42,7 +42,7 @@ function populateEventsModel(){
 							modulesArray.push(rows[x].module_name);
 						}
 						eventMeta.modules = modulesArray;
-						eventsModel.events.push(eventMeta);
+						eventsModel.events[eventMeta.id] = eventMeta;
 						taskCallback();
 					});
 				}
@@ -55,6 +55,27 @@ function populateEventsModel(){
 			});
 		}
 	]);
+}
+
+eventsModel.getConversationEventID = function(incomingNumber, outgoingNumber, callback){
+	var options = {sql: "SELECT event_id FROM conversations WHERE incoming_number = ? AND outgoing_number = ?", values: [incomingNumber, outgoingNumber]};
+	db.query(options, function(err, rows){
+		if (err){
+			callback(err);
+			return;	
+		} 
+		if (rows.length == 1){
+			callback(false, rows[0].event_id);
+		} else if (rows.length > 1) {
+			//-to-do error handling
+			console.log("Something is wrong...");
+			callback(new Error("Multiple Rows"), -1);
+		} else {
+			//-to-do- trigger new conversation!
+			console.log("Conversation doesn't exist...make new");
+			callback(new Error("Conversation Doesn't Exist."), -1);
+		}
+	});
 }
 
 module.exports = eventsModel;

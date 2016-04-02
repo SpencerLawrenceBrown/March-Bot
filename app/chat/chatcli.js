@@ -9,6 +9,9 @@ var chat = {}
 chat.start = function(){
 	//Start the bot
 	bot.init();
+	bot.on('response', function(response){
+		console.log(response);
+	});
 	
 	process.stdin.resume();
 	process.stdin.setEncoding('utf8');
@@ -20,9 +23,7 @@ chat.start = function(){
 		  done();
 		} else {
 			//Perform analysis
-			var response = bot.analyze(text);
-			process.stdout.write(response);
-			prompt();
+			bot.analyze(text);
 		}
 	});
 
