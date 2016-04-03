@@ -22,7 +22,6 @@ chat.start = function(){
 		if (text === 'quit\n') {
 		  done();
 		} else {
-			//Perform analysis
 			bot.analyze(text);
 		}
 	});

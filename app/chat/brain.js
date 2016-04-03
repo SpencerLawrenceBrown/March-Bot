@@ -22,10 +22,8 @@
 			- Assembly
 			- Etc.
 */
-
-var EventEmitter = require('events');
-var util = require('util');
-
+var async		 	= require('async');
+var EventEmitter 	= require('events');
 
 //Libraries
 var natural = require('natural');
@@ -38,6 +36,8 @@ brain.emitter = new EventEmitter();
 var textProcessor = require("./languageProcessing");
 //Decisions
 var decisionMaker = require("./decisionMaker");
+//Conversation Router
+var conversationUtility = require("./conversationUtility");
 //Memory
 var eventsModel = require("./eventsModel");
 
@@ -46,24 +46,28 @@ brain.init = function(){
 	textProcessor.init();
 	eventsModel.init();
 	decisionMaker.init();
+	conversationUtility.init();
 }
 
-//Current Analysis -- very small currently
+//Current Analysis -- very little analysis currently
 brain.analyze = function(input){
-	var processedInput = textProcessor.processInput(input);
-	eventsModel.getConversationEventID("9175725201", "9177087141", function (err, id){
-		// if (err) {
-		// 	throw err;
-		// }
-		var conversation = {
-			incomingNumber: "9175725201",
-			outgoingNumber: "9177087141"
+	var randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+	//Need to do error, checking
+
+	//Get Conversation
+	conversationUtility.getConversationByNumber(randomNumber, "9177087141", function(err, conversation){
+		if (err){
+			throw err;
 		}
-		decisionMaker.processInputToAction(processedInput, id, function(err, determinedContent){
+		var processedInput = textProcessor.processInput(input);
+		decisionMaker.processInputToAction(processedInput, conversation.getEventID(), function(err, determinedContent){
 			if (err) {
 				throw err;
-				return;
 			}
+			//Record the message
+			conversationUtility.recordMessage(conversation, input, determinedContent, function(err, success){
+				if (err){ throw err; }
+			});
 			var responseObject = buildResponse(determinedContent, conversation);
 			brain.emitter.emit("response", responseObject);
 		});
