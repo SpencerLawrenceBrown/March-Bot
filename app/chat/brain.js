@@ -51,13 +51,14 @@ brain.init = function(){
 
 //Current Analysis -- very little analysis currently
 brain.analyze = function(incomingNumber, outgoingNumber, input){
-
+	var send = true;
 	//For Chat Testing
 	if (incomingNumber == false && outgoingNumber == false){
 		//Random incoming number
 		incomingNumber = "" + Math.floor(1000000000 + Math.random() * 9000000000);
 		//Default outgoing number
 		outgoingNumber = '19177087141';
+		send = false;
 	}
 
 	//Get Conversation
@@ -74,7 +75,7 @@ brain.analyze = function(incomingNumber, outgoingNumber, input){
 			conversationUtility.recordMessage(conversation, input, determinedContent, function(err, success){
 				if (err){ throw err; }
 			});
-			var responseObject = buildResponse(determinedContent, conversation);
+			var responseObject = buildResponse(determinedContent, conversation, send);
 			brain.emitter.emit("response", responseObject);
 		});
 	});
@@ -86,8 +87,9 @@ brain.on = function(event, callback){
 }
 
 //Build the Message
-function buildResponse(determinedContent, conversation){
+function buildResponse(determinedContent, conversation, send){
 	var response = {};
+	response.send 		= send;
 	response.recepient 	= conversation.incomingNumber;
 	response.from		= conversation.outgoingNumber;
 	response.message 	= determinedContent;
