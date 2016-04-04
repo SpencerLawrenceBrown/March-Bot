@@ -16,12 +16,12 @@ chat.start = function(){
 			console.log(auth);
 			var options = {
 				method: "POST",
-				url: "https://messagingApi.sinch.com/v1/sms/" + response.recepiant,
+				url: "https://messagingApi.sinch.com/v1/sms/+" + response.recepient,
 				headers : {
 					"Content-Type" : "application/json",
 					"Authorization" : auth
 				},
-				body: "\"From\"" + ":" + "\"" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
+				body: "\"From\"" + ":+" + "\"" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
 			};
 			var callback =	function (error, response, body) {
 				if (error) console.log("Error: " + error);
