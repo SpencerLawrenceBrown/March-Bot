@@ -44,7 +44,7 @@ location.vanilla = {
 				throw callback(err);
 				return;
 			}
-			var string = "The event starts at: " + result[0]["event_start_address"] + ". The event ends at: " + result[0]["event_end_address"];
+			var string = "The event starts at: " + result[0]["event_start_address"] + ". \nThe event ends at: " + result[0]["event_end_address"];
 			callback(null, string);
 		});
 	}
