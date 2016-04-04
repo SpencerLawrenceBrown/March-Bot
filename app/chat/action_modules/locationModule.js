@@ -61,7 +61,7 @@ location.run = function(eventID, modifiers, callback){
 }
 
 location.instructionText = function(){
-	return ("[" + location.keyTerm + "] Receive the start location and end location of the event");
+	return ("\"" + location.keyTerm + "\": Receive the start location and end location of the event.");
 }
 
 function removeInsignificantModifiers(modifiers){

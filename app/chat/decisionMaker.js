@@ -141,12 +141,12 @@ decisionMaker.determineModule = function(input, eventID, callback){
 function generateErrorMessage(modules, eventID){
 	var message = "";
 	if (modules.length == 0){
-		message = "Sorry, I didn't understand your last message. Here are some requests you can make: ";
+		message = "Sorry, I didn't understand your last message. Here are some requests you can make: \n";
+
 		for (var i=0; i<eventsModel.events[eventID].modules.length; i++){
 			message += decisionMaker.modules[eventsModel.events[eventID].modules[i]].instructionText();
 			message += "\n";
 		}
-		message += ".";
 	} else if (modules.length > 1){
 		message = "Sorry, I can only process one request at a time. Do you want to ";
 		for (var i=0; i<modules.length; i++){
@@ -158,6 +158,7 @@ function generateErrorMessage(modules, eventID){
 			}
 		}
 	}
+	console.log(message);
 	return message;
 }
 

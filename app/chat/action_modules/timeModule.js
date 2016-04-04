@@ -88,7 +88,7 @@ time.run = function(eventID, modifiers, callback){
 }
 
 time.instructionText = function(){
-	return ("[" + time.keyTerm + "] Receive the event time.");
+	return ("\"" + time.keyTerm + "\": Receive the event time.");
 }
 
 function removeInsignificantModifiers(modifiers){
