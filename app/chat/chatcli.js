@@ -13,6 +13,7 @@ chat.start = function(){
 	bot.on('response', function(response){
 		console.log(response);
 		if (response.send){
+			console.log(auth);
 			var options = {
 				method: "POST",
 				url: "https://messagingApi.sinch.com/v1/sms/" + response.recepiant,
