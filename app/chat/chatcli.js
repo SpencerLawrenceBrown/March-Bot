@@ -16,7 +16,7 @@ chat.start = function(){
 			var options = {
 				method: "POST",
 				url: "https://messagingApi.sinch.com/v1/sms/" + response.recepiant,
-				headers: {
+				headers : {
 					"Content-Type" : "application/json",
 					"Authorization" : auth
 				},
@@ -26,7 +26,7 @@ chat.start = function(){
 				if (error) console.log("Error: " + error);
 				console.log(body);
 			};
-			
+			console.log(options);
 			request(options, callback);
 		}
 	});
