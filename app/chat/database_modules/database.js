@@ -1,12 +1,13 @@
-var mysql = require("mysql");
+var mysql 		= require("mysql");
+var dbConfig 	= require("../../config/dbConfig");
 
 var db = {}
 
 var connection = mysql.createConnection({
-	host: "localhost",
-	user: "marchbot",
-	password: "Chelsea23",
-	database: "marchbot_test"
+	host: dbConfig.host,
+	user: dbConfig.user,
+	password: dbConfig.password,
+	database: dbConfig.database
 });
 
 db.connect = function(){

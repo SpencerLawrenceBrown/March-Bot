@@ -22,7 +22,7 @@ chat.start = function(){
 		if (text === 'quit\n') {
 		  done();
 		} else {
-			bot.analyze(text);
+			bot.analyze(false,false,text);
 		}
 	});
 

@@ -1,5 +1,9 @@
 var express 	= require('express');
 var router 		= express.Router();
+var chatBackend = require("../../../app/chat/brain");
+
+//Take the text
+chatBackend.init();
 
 router.use(function(req, res, next){
 	//Do logging
@@ -13,6 +17,7 @@ router.get("/", function(req, res){
 
 router.post("/incoming", function(req, res){
 	console.log(req.body);
+	chatBackend.analyze(req.from.endpoint, req.to.endpoint, req.message);
 });
 
 module.exports = router;
