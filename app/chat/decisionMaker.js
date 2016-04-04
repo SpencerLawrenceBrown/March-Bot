@@ -141,7 +141,7 @@ decisionMaker.determineModule = function(input, eventID, callback){
 function generateErrorMessage(modules, eventID){
 	var message = "";
 	if (modules.length == 0){
-		message = "Sorry, I didn't understand your last message. Here are some requests you can make: \n";
+		message = "Sorry, I did not understand your last message. Here are some requests you can make: \n";
 
 		for (var i=0; i<eventsModel.events[eventID].modules.length; i++){
 			message += decisionMaker.modules[eventsModel.events[eventID].modules[i]].instructionText();
