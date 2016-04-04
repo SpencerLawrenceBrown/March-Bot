@@ -21,7 +21,7 @@ chat.start = function(){
 					"Content-Type" : "application/json",
 					"Authorization" : auth
 				},
-				body: "\"" + "From:" + "\"" + response.from + ", \"Message\"" + ":" + "\"" + response.message + "\"}"
+				body: "\"" + "From:" + "\"" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
 			};
 			var callback =	function (error, response, body) {
 				if (error) console.log("Error: " + error);
