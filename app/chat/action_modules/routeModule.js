@@ -34,7 +34,7 @@ route.run = function(eventID, modifiers, callback){
 }
 
 route.instructionText = function(){
-	return ("\"" + route.keyTerm + "\": Receive the event route.");
+	return ("\\\"" + route.keyTerm + "\\\": Receive the event route.");
 }
 
 function removeInsignificantModifiers(modifiers){
