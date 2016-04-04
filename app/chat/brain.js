@@ -88,8 +88,8 @@ brain.on = function(event, callback){
 //Build the Message
 function buildResponse(determinedContent, conversation){
 	var response = {};
-	response.recepient 	= "+1" + conversation.incomingNumber;
-	response.from		= "+1" + conversation.outgoingNumber;
+	response.recepient 	= conversation.incomingNumber;
+	response.from		= conversation.outgoingNumber;
 	response.message 	= determinedContent;
 	return response;
 }

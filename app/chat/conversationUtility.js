@@ -132,7 +132,7 @@ function createNewConversationByNumber(convo, incomingNumber, outgoingNumber, ca
 }
 
 function addNewIncomingNumber(incomingNumber, callback){
-	var options = {sql: "INSERT INTO incoming_numbers SET ?", values: [{phone_number: incomingNumber, country_code: 1}]};
+	var options = {sql: "INSERT INTO incoming_numbers SET ?", values: [{phone_number: incomingNumber}]};
 	db.query(options, function(err, data){
 		if (err){
 			callback(err);
