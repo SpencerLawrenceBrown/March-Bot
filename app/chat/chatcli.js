@@ -12,24 +12,24 @@ chat.start = function(){
 	bot.init();
 	bot.on('response', function(response){
 		console.log(response);
-		if (response.send){
-			console.log(auth);
-			var options = {
-				method: "POST",
-				url: "https://messagingApi.sinch.com/v1/sms/+" + response.recepient,
-				headers : {
-					"Content-Type" : "application/json",
-					"Authorization" : auth
-				},
-				body: "{\"From\"" + ":" + "\"+" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
-			};
-			var callback =	function (error, response, body) {
-				if (error) console.log("Error: " + error);
-				console.log(body);
-			};
-			console.log(options);
-			request(options, callback);
-		}
+		// if (response.send){
+		// 	console.log(auth);
+		// 	var options = {
+		// 		method: "POST",
+		// 		url: "https://messagingApi.sinch.com/v1/sms/+" + response.recepient,
+		// 		headers : {
+		// 			"Content-Type" : "application/json",
+		// 			"Authorization" : auth
+		// 		},
+		// 		body: "{\"From\"" + ":" + "\"+" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
+		// 	};
+		// 	var callback =	function (error, response, body) {
+		// 		if (error) console.log("Error: " + error);
+		// 		console.log(body);
+		// 	};
+		// 	console.log(options);
+		// 	request(options, callback);
+		// }
 	});
 	
 	process.stdin.resume();
