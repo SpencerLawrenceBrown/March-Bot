@@ -15,7 +15,7 @@ router.get("/", function(req, res){
 	res.render('pages/index');
 });
 
-router.post("/incoming", function(req, res){
+router.get("/incoming", function(req, res){
 	console.log(req.body);
 	//chatBackend.analyze(req.body.from.endpoint, req.body.to.endpoint, req.body.message);
 	res.status(200);
