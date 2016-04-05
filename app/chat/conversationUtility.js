@@ -57,7 +57,6 @@ utility.getConversationByNumber = function(incomingNumber, outgoingNumber, callb
 		var convo = new Conversation();
 		convo.setIncomingNumber(incomingNumber);
 		convo.setOutgoingNumber(outgoingNumber);
-		console.log(convo);
 
 		//If this conversation exists
 		if (data.length > 0){

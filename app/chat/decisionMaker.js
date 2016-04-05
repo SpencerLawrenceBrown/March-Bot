@@ -158,7 +158,6 @@ function generateErrorMessage(modules, eventID){
 			}
 		}
 	}
-	console.log(message);
 	return message;
 }
 

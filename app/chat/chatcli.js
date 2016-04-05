@@ -14,7 +14,6 @@ chat.start = function(){
 	//Start the bot
 	bot.init();
 	bot.on('response', function(response){
-		console.log(response);
 		if (response.send){
 			var data = JSON.stringify({
 					api_key: auth.key,
@@ -38,10 +37,11 @@ chat.start = function(){
 					throw err;
 				}
 			}
-			console.log(options);
 			request(options, callback);
 		}
+		console.log("Message sent.");
 	});
+
 	
 	process.stdin.resume();
 	process.stdin.setEncoding('utf8');
