@@ -4,6 +4,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "latest",
+    "easynexmo": "^0.7.1",
     "ejs": "latest",
     "express": "latest",
     "express-session": "^1.13.0",
