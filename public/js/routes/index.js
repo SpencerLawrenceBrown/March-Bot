@@ -19,6 +19,7 @@ router.get("/incoming", function(req, res){
 	console.log(req.query);
 	chatBackend.analyze(req.query.msisdn, req.query.to, req.query.text);
 	res.status(200);
+	res.end("Message Received.");
 });
 
 module.exports = router;
