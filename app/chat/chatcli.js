@@ -2,6 +2,7 @@
 var util 	= require('util');
 var request = require('request');
 var nexmo 	= require('easynexmo');
+var utf8 	= require('utf8');
 var auth 	= require('../config/sinchAuth');
 //Chat Brain
 var bot = require("./brain");
@@ -9,31 +10,36 @@ var bot = require("./brain");
 var chat = {}
 
 chat.start = function(){
-	nexmo.initialize(auth.key, auth.secret);
+	nexmo.initialize(auth.key, auth.secret, true);
 	//Start the bot
 	bot.init();
 	bot.on('response', function(response){
 		console.log(response);
 		if (response.send){
-			nexmo.sendTextMessage(response.from, response.recepient, response.message, function(err, data){
-				console.log(data);
-			});
-		// 	console.log(auth);
-		// 	var options = {
-		// 		method: "POST",
-		// 		url: "https://messagingApi.sinch.com/v1/sms/+" + response.recepient,
-		// 		headers : {
-		// 			"Content-Type" : "application/json",
-		// 			"Authorization" : auth
-		// 		},
-		// 		body: "{\"From\"" + ":" + "\"+" + response.from + "\", \"Message\"" + ":" + "\"" + response.message + "\"}"
-		// 	};
-		// 	var callback =	function (error, response, body) {
-		// 		if (error) console.log("Error: " + error);
-		// 		console.log(body);
-		// 	};
-		// 	console.log(options);
-		// 	request(options, callback);
+			var data = JSON.stringify({
+					api_key: auth.key,
+					api_secret: auth.secret,
+					to: response.recepient,
+					from: response.from,
+					text: response.message
+				});
+			var options = {
+				method: "POST",
+				url: "https://rest.nexmo.com/sms/json",
+				headers:{
+					"Content-Type": "application/json"
+				},
+				body: data
+			};
+
+			var callback = function(err, response){
+				if (err){ 
+					console.log("Error: " + err); 
+					throw err;
+				}
+			}
+			console.log(options);
+			request(options, callback);
 		}
 	});
 	
