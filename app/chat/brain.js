@@ -55,7 +55,7 @@ brain.analyze = function(incomingNumber, outgoingNumber, input){
 	//For Chat Testing
 	if (incomingNumber == false && outgoingNumber == false){
 		//Random incoming number
-		incomingNumber = "" + Math.floor(1000000000 + Math.random() * 9000000000);
+		incomingNumber = "1" + Math.floor(1000000000 + Math.random() * 9000000000);
 		//Default outgoing number
 		outgoingNumber = '19177087141';
 		send = false;
