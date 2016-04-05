@@ -16,7 +16,7 @@ router.get("/", function(req, res){
 });
 
 router.get("/incoming", function(req, res){
-	console.log(req.params);
+	console.log(req);
 	//chatBackend.analyze(req.body.from.endpoint, req.body.to.endpoint, req.body.message);
 	res.status(200);
 	res.end("Message Received");
